@@ -1,0 +1,25 @@
+body {
+  background: lightcyan;
+}
+p {
+    background-color: whitesmoke;
+    border: 10px solid darkred;
+    border-radius: 10px;
+    padding: 5px;
+    list-style-position: inside;   /* keeps numbers inside */
+    display: inline-block;   */ */
+}
+
+ol {
+    background-color: lightcoral;
+    border: 2px solid black;
+    border-radius: 2px;
+    padding: 2px;
+
+    list-style-position: inside;   
+    display: inline-block;
+}         
+
+#listA {
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -105,6 +105,8 @@ var allFunctions = function () {
     request.open("GET", requestUrl, true);
     request.onload = function () {
       if (this.status >= 200 && this.status < 400) {
+        document.querySelector("main .forDebug2").innerHTML = ""; //changed code
+        document.querySelector("#xmlDataAsTable").innerHTML = ""; //changed code
         var textarea = document.createElement("textarea");
         textarea.rows = "20";
         textarea.cols = "60";
@@ -155,6 +157,7 @@ var allFunctions = function () {
   };
 
   var getAndDisplayMap = function (wms_request) {
+    document.querySelector("main .mapDiv").innerHTML=""; //changed code
     var img = document.createElement("img");
     img.style.display = "none";
     img.src = wms_request;
