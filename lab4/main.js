@@ -47,9 +47,9 @@ var map = L.map("map-canvas", {
 
 // 2. aerial photo * not working at this moment (see Assignment)
 //    - can be switched on/off by toggle thru L.control.layers (see below in this script)
-var wms_aerial_url = "https://geodata1.nationaalgeoregister.nl/luchtfoto/wms?";
+var wms_aerial_url = "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?";
 var basemap_aerial = new L.tileLayer.wms(wms_aerial_url, {
-  layers: ["luchtfoto_png"],
+  layers: ["Actueel_ortho25"],
   styles: "",
   format: "image/png",
   transparent: true,
@@ -71,8 +71,38 @@ var sound = new L.tileLayer.wms(wms_sound_url, {
   pointerCursor: true,
 });
 
+var parcels = new L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+  layers: ["Delft:parcels"],
+  styles: ["Delft:waterdeel_vlak"],
+  format: "image/png",
+  transparent: true,
+  attribution: "My GeoServer",
+  pointerCursor: true,
+});
+
+var top10nl = new L.tileLayer.wms("http://localhost:8080/geoserver/wms", {
+  layers: ["Delft:SPOORBAANDEEL_LIJN", "Delft:WATERDEEL_VLAK"],
+  styles: ["", ""],
+  format: "image/png",
+  transparent: true,
+  attribution: "My GeoServer",
+  pointerCursor: true,
+});
+
+var pdok_bag = new L.tileLayer.wms("https://service.pdok.nl/lv/bag/wms/v2_0?", {
+  layers: ["pand"],
+  styles: "",
+  format: "image/png",
+  transparent: true,
+  attribution: '© <a href="https://www.pdok.nl">PDOK - BAG</a>',
+  pointerCursor: true,
+});
+
 var overlays = {
   "Road noise [WMS]": sound,
+  "Parcels [WMS]": parcels,
+  "Top10NL [WMS]": top10nl,
+  "BAG Buildings [WMS]": pdok_bag,
 };
 
 var baseLayers = {
